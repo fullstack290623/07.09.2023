@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MATRIX</title>
+</head>
+<body>
+    <h1>MATRIX</h1>
+    <p>X: <input type="number" id = "x_txt" value="0" min="0" max="2"></p>
+    <p>Y: <input type="number" id = "y_txt" value="0" min="0" max="2"></p>
+    <p>Z: <input type="number" id = "z_txt" value="0" min="0" max="2"></p>
+    <p>FIND: <input type="number" id = "find_txt" value="0" min="0" max="2"></p>
+    <button onclick="populate()">TRY</button>    
+    <hr />
+    <div>
+        <div id="result"></div>
+    </div>
+    <script>
+        const matrix = [
+          // 0  1  2
+            [0, 0, 0],
+            [0, 0, 0],
+            [0, 0, 0],
+        ]
+        function populate() {
+            const x = parseInt(document.getElementById('x_txt').value)
+            const y = parseInt(document.getElementById('y_txt').value)
+            const z = parseInt(document.getElementById('z_txt').value)
+            const find = parseInt(document.getElementById('find_txt').value)
+
+            matrix[y][x] = z
+
+            const result = document.getElementById('result')
+            //result.innerHTML = `${x}, ${y}`
+            let line = ""
+            let sum = 0
+            for (let rows = 0; rows < matrix.length; rows++) {
+                for (let cols = 0; cols < matrix[rows].length; cols++) {
+                    line += `${matrix[rows][cols]} `
+                    if (matrix[rows][cols] > 0) {
+                        sum += 1
+                    }
+                }
+                line += '<br />'
+            }
+            result.innerHTML = line + (sum == 9 ? ` MATRIX FULL <br />` : ``)
+
+            for (let rows = 0; rows < matrix.length; rows++) {
+                for (let cols = 0; cols < matrix[rows].length; cols++) {
+                    if (matrix[rows][cols] == find) {
+                        result.innerHTML += `found at (${rows} ${cols})`
+                    }
+                }
+                line += '<br />'
+            }            
+        }
+    </script>
+</body>
+</html>

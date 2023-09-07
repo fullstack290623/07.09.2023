@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        // 3 seconds later remind me ... say_hello
+
+        function say_hello() {
+            alert('hello')
+        }
+        setTimeout(say_hello, 3000)
+
+        function do_something() {
+            // 2
+            // in the future ... takes 3 seconds
+            // math calcualtion
+            // connecting to remote server
+        }
+
+        // 1
+        do_something().then ( // 3 ...... what to do with the result ... ?
+                                        )
+        // 4
+        alert('line #28')
+        */
+
+        // 1
+        fetch('https://randomuser.me/api') // Replace with your API URL
+            .then((response) => {
+                // 3
+                if (!response.ok) {
+                throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then((data) => {
+                document.write(JSON.stringify(data.results[0])); // Do something with the data
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+
+        // 2
+        console.log('fetching ...');
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="Student.js"></script>
+    <title>HAZARA</title>
+</head>
+<body>
+    <script>
+        const x = 1;
+        let y;
+        var z;
+        const arr = [1,3,5]
+        const words = ['hello', 'js']
+        const hyb = [1,'hi', [1,3]]
+        // if  else
+        // while
+        // do-while
+        // for
+        // break continue
+        // setTimeOut
+        // setInterval
+        // arrays functions: filter, every, some, map
+        const obj = {
+            name: 'danny',
+            age: 18,
+            grades: [ 90, 100, 88],
+            sayHello(msg) {
+                console.log('hello ' + msg);
+            }
+        }
+        obj.sayHello('java script')
+
+        function sayHello() {
+            console.log('hello');
+        }
+        sayHello()
+
+        console.log();
+        Math.random();
+
+        class Student {
+            constructor (name_student, student_age, student_grades) {
+                this.name = name_student
+                this.age = student_age
+                this.grades = student_grades
+            }
+            sayHello(msg) {
+                    console.log('hello ' + msg);
+            }            
+        }
+
+        const danny2 = new Student('danny', 18, [ 90, 100, 88])
+        const sharon2 = new Student('sharon', 25, [ 90, 100, 88])
+        danny2.sayHello('java script')
+        // self created
+        // const console = new Console() 
+        //new Math
+        //Math.floor
+        console.log();
+        const my_class = [danny2, sharon2]
+        my_class.filter(student => student.grades.length > 2)
+        my_class.map(studnet => studnet.name)
+
+        function create_student(name_student, student_age, student_grades) {
+            return {
+                name: name_student,
+                age: student_age,
+                grades: student_grades,
+                sayHello(msg) {
+                    console.log('hello ' + msg);
+                }
+            }
+        }
+        const danny = create_student('danny', 18, [ 90, 100, 88])
+        // const danny = {
+        //      name: 'danny',
+        //     age: 18,
+        //     grades: [ 90, 100, 88],
+        //     sayHello(msg) {
+        //         console.log('hello ' + msg);
+        //     }
+        // }
+
+        const sharon = create_student('sharon', 25, [ 90, 100, 88])
+        // const sharon = {
+        //     name: 'sharon',
+        //     age: 25,
+        //     grades: [ 90, 100, 88],
+        //     sayHello(msg) {
+        //         console.log('hello ' + msg);
+        //     }
+        // }
+        </script>
+</body>
+</html>

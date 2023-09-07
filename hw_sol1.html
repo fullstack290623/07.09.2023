@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Targil 1</title>
+    <script src="Car.js"></script>
+</head>
+<body>
+    <label for="manufacturer">Manufacturer:</label>
+    <input type="text" id="manufacturer" ><br /><br />
+    <label for="model">Model:</label>
+    <input type="text" id="model" ><br /><br />
+    <label for="price">Price:</label>
+    <input type="number" id="price" ><br /><br />
+    <label for="license">License Number:</label>
+    <input type="text" id="license" ><br /><br />
+    <label for="year">Year of Manufacture:</label>
+    <input type="number" id="year" ><br /><br />
+    <label for="color">Color:</label>
+    <input type="text" id="color" ><br /><br />
+    <label for="maintenance">Number of Years of Car Maintenance:</label>
+    <!-- <input type="number" id="maintenance" ><br /><br /> -->
+    <button onclick="get_maintenance()">GET</button><br />
+    <div id="maint">[ ]</div><br />   
+
+    <button type="button" onclick="createCar()">Create Car</button>  <br />
+    <hr />
+    <div id="result" ></div>
+    <script>
+        let maint = []
+        function get_maintenance() {
+            let maint_year = parseInt(prompt('Enter maintenance year [-99 to exit]: '))
+            maint = []
+            while (maint_year != -99) {
+                maint.push(maint_year)
+                maint_year = parseInt(prompt('Enter maintenance year [-99 to exit]: '))
+            }
+            document.getElementById('maint').innerHTML = `${maint}`
+        }
+
+        function create_car(_manufacturer, _model, _price, _license, 
+                                _year, _color, _maintenance) {
+            const car = {
+                manufacturer : _manufacturer,
+                model: _model,
+                price: _price,
+                license: _license, 
+                year: _year,
+                color: _color,
+                maintenance: _maintenance
+            }
+            return car
+        }
+
+        function createCar() {
+            // Get input values
+            const manufacturer = document.getElementById("manufacturer").value;
+            const model = document.getElementById("model").value;
+            const price = parseFloat(document.getElementById("price").value);
+            const license = document.getElementById("license").value;
+            const year = parseInt(document.getElementById("year").value);
+            const color = document.getElementById("color").value;
+            const maintenance = parseInt(document.getElementById("maintenance").value);    
+
+            const car = create_car(manufacturer, model, price, license, 
+                                year, color, maintenance)
+
+            const car2 = new Car(manufacturer, model, price, license, 
+                                year, color, maintenance)
+
+            document.getElementById('result').innerHTML = JSON.stringify(car) + '<br />'
+            document.getElementById('result').innerHTML += JSON.stringify(car2) 
+        }
+
+    </script>
+    
+</body>
+</html>
